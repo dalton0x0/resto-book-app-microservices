@@ -263,7 +263,7 @@ curl -X POST http://localhost:8081/api/v1/auth/register \
     "lastName": "Dupont",
     "email": "jean.dupont@email.com",
     "password": "MonMotDePasse@123",
-    "phone": "+33612345678"
+    "phone": "+33123456789"
   }'
 ```
 
@@ -346,11 +346,11 @@ curl -X POST http://localhost:8081/api/v1/admin/users \
   -H "Authorization: Bearer <admin_token>" \
   -H "Content-Type: application/json" \
   -d '{
-    "firstName": "Marie",
-    "lastName": "Martin",
-    "email": "marie.martin@quickeat.fr",
-    "password": "Staff@123!",
-    "phone": "+33698765432",
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "email": "jean.dupont@email.com",
+    "password": "MonMotDePasse@123",
+    "phone": "+33123456789",
     "roleName": "STAFF",
     "enabled": true
   }'
