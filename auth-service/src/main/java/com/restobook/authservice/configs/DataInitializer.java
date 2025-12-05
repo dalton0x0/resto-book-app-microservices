@@ -57,8 +57,8 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     private void initializeAdminUser() {
-        String adminEmail = "admin@example.fr";
-        String adminPassword = "StrongP@ssw0rd";
+        String adminEmail = "admin@email.fr";
+        String adminPassword = "MonMotDePasse@123";
 
         if (!userRepository.existsByEmail(adminEmail)) {
             Role adminRole = roleRepository.findByName(RoleName.ADMIN)
