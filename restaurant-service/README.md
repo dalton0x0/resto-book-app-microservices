@@ -2,6 +2,21 @@
 
 Service de gestion des restaurants pour la plateforme RestoBook de QuickEat.
 
+## Table des matières
+
+- [Description](#description)
+- [Architecture](#architecture)
+- [Base de sonnées](#base-de-données)
+- [Endpoints API](#endpoints-api)
+- [Configuration](#configuration)
+- [Installation](#installation)
+- [Documentation API](#documentation-api)
+- [Sécurité](#sécurité)
+- [Healthcheck](#healthcheck)
+- [Communication Inter-Services](#communication-inter-services)
+- [Exemples de Requêtes](#exemples-de-requêtes)
+- [License](#license)
+
 ## Description
 
 Ce microservice gère :
@@ -111,7 +126,7 @@ cp .env.properties.example .env.properties
 | `DB_PASSWORD`             | Mot de passe        | ``                      |
 | `AUTH_SERVICE_URL`        | URL du Auth Service | `http://localhost:8081` |
 
-## Démarrage
+## Installation
 
 ```bash
 # Compiler
@@ -125,6 +140,37 @@ mvn spring-boot:run
 
 - **Swagger UI**: http://localhost:8082/swagger-ui.html
 - **OpenAPI JSON**: http://localhost:8082/api-docs
+
+## Sécurité
+
+- Les endpoints publics (GET) ne nécessitent pas d'authentification
+- Les endpoints de modification nécessitent un token JWT valide
+- Seuls les propriétaires (OWNER) et administrateurs (ADMIN) peuvent modifier un restaurant
+
+## Healthcheck
+
+```bash
+curl http://localhost:8081/actuator/health
+```
+
+## Communication Inter-Services
+
+La validation du token auprès du `auth-service` se fait via l'endpoint `/internal/validate` :
+
+```bash
+curl -H "Authorization: Bearer <token>" \
+  http://localhost:8081/api/v1/internal/validate
+```
+
+Réponse :
+```json
+{
+  "valid": true,
+  "userId": 1,
+  "email": "user@example.com",
+  "role": "ROLE_CLIENT"
+}
+```
 
 ## Communication Inter-Services
 
@@ -193,8 +239,12 @@ curl -X POST http://localhost:8082/api/v1/restaurants/1/menu \
   }'
 ```
 
-## Sécurité
+## License
 
-- Les endpoints publics (GET) ne nécessitent pas d'authentification
-- Les endpoints de modification nécessitent un token JWT valide
-- Seuls les propriétaires (OWNER) et administrateurs (ADMIN) peuvent modifier un restaurant
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+**Si ce projet vous a été utile, n'hésitez pas à lui donner une étoile ⭐**
+
+Made with ❤️ by [Chéridanh TSIELA]

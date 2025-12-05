@@ -1,6 +1,6 @@
 # Auth Service - RestoBook QuickEat
 
-Service d'authentification et de gestion des utilisateurs pour la plateforme RestauBook de QuickEat.
+Service d'authentification et de gestion des utilisateurs pour la plateforme RestoBook de QuickEat.
 
 ## Table des matières
 
@@ -32,7 +32,7 @@ Ce microservice gère l'ensemble des fonctionnalités liées à l'authentificati
 
 ```
 auth-service/
-├── src/main/java/com/restaubook/auth/
+├── src/main/java/com/restobook/auth/
 │   ├── config/           # Configurations (Security, JWT, OpenAPI)
 │   ├── controller/       # Contrôleurs REST
 │   ├── dto/
@@ -173,13 +173,13 @@ mvn spring-boot:run
 
 ```bash
 # Build
-docker build -t restaubook/auth-service .
+docker build -t restobook/auth-service .
 
 # Run
 docker run -p 8081:8081 \
   -e DB_HOST=mysql \
   -e DB_PASSWORD=secret \
-  restaubook/auth-service
+  restobook/auth-service
 ```
 
 ### Compte Admin par défaut

@@ -1,4 +1,4 @@
-package com.restobook.restaurantservice.services.impl;
+package com.restobook.restaurantservice.controllers;
 
 import com.restobook.restaurantservice.dtos.response.ApiResponse;
 import com.restobook.restaurantservice.dtos.response.RestaurantResponse;
